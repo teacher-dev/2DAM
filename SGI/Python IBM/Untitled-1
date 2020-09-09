@@ -1,0 +1,10 @@
+import spss
+
+string1="DESCRIPTIVES VARIABLES="
+N=spss.GetVariableCount()
+scaleVarList=[]
+for i in xrange(N):
+    if spss.GetVariableMeasurementLevel(i)=='scale':
+        scaleVarList.append(spss.GetVariableName(i))
+    string2="."
+spss.Submit([string1, ' '.join(scaleVarList), string2])
